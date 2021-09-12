@@ -1,3 +1,5 @@
+key = "00000000-0000-0000-0000-000000000000" #REPLACE THIS WITH API KEY
+
 import os
 
 try:
@@ -7,9 +9,6 @@ except ModuleNotFoundError:
     print("This is for calling stats from the hypixel/mojang api")
     os.system("pip install requests")
     import requests
-
-
-key = "a52b6b6b-18df-42fe-8dff-dd7a5e6f287d"
 
 if key == "00000000-0000-0000-0000-000000000000":
 	print("You can set this by default by editing this file")
@@ -24,7 +23,7 @@ def getUUID(name):
 def getIGN():
     nameRequest = requests.get("https://api.mojang.com/user/profiles/%s/names" % uuid).json()
     currentUsername = nameRequest[-1].get('name')
-    return currentUsername.lower()LOL
+    return currentUsername.lower()
 
 def checkOnline(name):
 	url = f"https://api.hypixel.net/player?key={key}&uuid={getUUID(name)}"
@@ -38,9 +37,9 @@ def checkOnline(name):
 	
 
 def main():
-	duel = "sumo"
-	names = "Mastercloon"
-	nameList = names.split()
+	duel = input("enter duel: ")
+	duel = duel.lower()
+	nameList = input("Please enter your usernames seperated by spaces: ").split()
 	
 	totalWins = 0
 	totalAccounts = 0
